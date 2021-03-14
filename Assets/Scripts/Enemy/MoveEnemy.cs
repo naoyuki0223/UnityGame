@@ -15,6 +15,7 @@ public class MoveEnemy : MonoBehaviour
     //private CharacterController enemyController;
     private Animator animator;
     private NavMeshAgent navMeshAgent;
+    private CharacterController enemyController;
     //目的地
     private Vector3 destination;
     //到着判定
@@ -38,6 +39,7 @@ public class MoveEnemy : MonoBehaviour
         //enemyController = GetComponent<CharacterController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        enemyController = GetComponent<CharacterController>();
         //初期値設定
         arrived = false;
         startPosition = transform.position;
@@ -56,7 +58,6 @@ public class MoveEnemy : MonoBehaviour
             if (state == EnemyState.Chase)
             {
                 animator.SetFloat("Speed", 3.5f);
-                SetState(EnemyState.Chase);
                 destination = playerTransform.position;
                 navMeshAgent.SetDestination(playerTransform.position);
             }
